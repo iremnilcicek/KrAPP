@@ -51,12 +51,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let dataString = String(data: data, encoding: .utf8) {
                     print("Data is in string: \(dataString)")
                 }
+                
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let response:Response = try jsonDecoder.decode(Response.self, from: data)
+                    print( "IS RESPONSE SUCCESS?" + String(response.success))
+                } catch let errorInparsing {
+                    print("Error IN parsing." + errorInparsing.localizedDescription)
+                }
+                
             }
-            print("data:  \(data)")
-            
+      
         }
         task.resume()
-        
     }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,4 +88,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         }
         
-    }
+}
+
