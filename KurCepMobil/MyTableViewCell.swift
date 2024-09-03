@@ -1,10 +1,3 @@
-//
-//  MyTableViewCell.swift
-//  KurCepMobil
-//
-//  Created by Apple on 28.08.2024.
-//
-
 import Foundation
 import UIKit
 
@@ -18,11 +11,12 @@ class MyTablewViewCell:UITableViewCell {
     @IBOutlet weak var chageRateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var iconLabel: UILabel!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        //let margins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        //contentView.frame = contentView.frame.inset(by: margins)
-        contentView.layer.cornerRadius = 8
+        currencyIcon?.image = UIImage(named: "circlepng")
+        currencyIcon.frame = CGRect(x: 7, y:5 , width: 60, height:60)
     }
     
 }

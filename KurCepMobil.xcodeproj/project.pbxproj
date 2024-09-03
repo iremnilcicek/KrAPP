@@ -16,7 +16,6 @@
 		F55341D92C7F156A00ADDEAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55341D72C7F156A00ADDEAE /* LaunchScreen.storyboard */; };
 		F55341E12C7F1DED00ADDEAE /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55341E02C7F1DED00ADDEAE /* ConverterViewController.swift */; };
 		F55341E32C7F218900ADDEAE /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55341E22C7F218900ADDEAE /* MyTableViewCell.swift */; };
-		F55341E52C7F3F8000ADDEAE /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55341E42C7F3F8000ADDEAE /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		F55341DA2C7F156A00ADDEAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F55341E02C7F1DED00ADDEAE /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		F55341E22C7F218900ADDEAE /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
-		F55341E42C7F3F8000ADDEAE /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,6 @@
 				F55341E02C7F1DED00ADDEAE /* ConverterViewController.swift */,
 				F55341D22C7F156900ADDEAE /* Main.storyboard */,
 				F55341E22C7F218900ADDEAE /* MyTableViewCell.swift */,
-				F55341E42C7F3F8000ADDEAE /* CurrencyModel.swift */,
 				F55341D52C7F156A00ADDEAE /* Assets.xcassets */,
 				F55341D72C7F156A00ADDEAE /* LaunchScreen.storyboard */,
 				F55341DA2C7F156A00ADDEAE /* Info.plist */,
@@ -152,7 +149,6 @@
 			files = (
 				F55341D12C7F156900ADDEAE /* HomeViewController.swift in Sources */,
 				F55341CD2C7F156900ADDEAE /* AppDelegate.swift in Sources */,
-				F55341E52C7F3F8000ADDEAE /* CurrencyModel.swift in Sources */,
 				F55341CF2C7F156900ADDEAE /* SceneDelegate.swift in Sources */,
 				F55341E32C7F218900ADDEAE /* MyTableViewCell.swift in Sources */,
 				F55341E12C7F1DED00ADDEAE /* ConverterViewController.swift in Sources */,

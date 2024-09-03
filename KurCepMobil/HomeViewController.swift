@@ -12,6 +12,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
+    let CORE_URL:String = "https://data.fixer.io/api"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,7 +24,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.rowHeight = 60
         
         let parameters = ["access_key":"764a7f3061a8509b12484f62a2cd012c"]
-        var urlComponents = URLComponents(string: "https://data.fixer.io/api/latest?access_key=764a7f3061a8509b12484f62a2cd012c")!
+        var urlComponents = URLComponents(string: CORE_URL + "/latest")!
         
         urlComponents.queryItems = parameters.map{URLQueryItem(name: $0.key, value: $0.value)}
         
@@ -56,6 +58,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let jsonDecoder = JSONDecoder()
                     let response:Response = try jsonDecoder.decode(Response.self, from: data)
                     print( "IS RESPONSE SUCCESS?" + String(response.success))
+                    currencyResponseList.removeAll()
+                    for currenceTemp in response.rates {
+                        print("responses: " + currenceTemp.key)
+                        let element:CurrencyResponse = CurrencyResponse(currencyName: currenceTemp.key, value: currenceTemp.value)
+                        currencyResponseList.append(element)
+                    }
+                    
+                    DispatchQueue.main.sync {
+                        self.tableView.reloadData()
+                    }
+                   
                 } catch let errorInparsing {
                     print("Error IN parsing." + errorInparsing.localizedDescription)
                 }
@@ -67,26 +80,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return currencyList.count
+            return currencyResponseList.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyTablewViewCell", for:indexPath ) as! MyTablewViewCell
-            
-            cell.imageView?.image = nil
-            cell.imageView?.translatesAutoresizingMaskIntoConstraints = false
-            cell.imageView?.frame.size = CGSize(width: 10, height: 10)
-            cell.imageView?.clipsToBounds = true
-            cell.imageView?.image = currencyList[indexPath.row].currencyIcon
-            
-            cell.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-            cell.fromLabel.text = currencyList[indexPath.row].currencyName
-            cell.toLabel.text = "TRY"
-            cell.chageRateLabel.text = String(currencyList[indexPath.row].changeRate)
-            cell.priceLabel.text = String(currencyList[indexPath.row].price)
+            cell.iconLabel.text = currencyResponseList[indexPath.row].currencyName
+            cell.fromLabel.text = currencyResponseList[indexPath.row].currencyName
+            cell.toLabel.text = "EUR"
+          
+            let formattedDouble = String(format:"%.2f",currencyResponseList[indexPath.row].value)
+            cell.priceLabel.text = String(formattedDouble)
             
             return cell
         }
         
 }
-
