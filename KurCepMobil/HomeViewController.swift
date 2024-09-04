@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.rowHeight = 60
         
-        let parameters = ["access_key":"764a7f3061a8509b12484f62a2cd012c"]
+        let parameters = ["access_key":"fe397785eae3181f209afb4662a494eb"]
         var urlComponents = URLComponents(string: CORE_URL + "/latest")!
         
         urlComponents.queryItems = parameters.map{URLQueryItem(name: $0.key, value: $0.value)}
